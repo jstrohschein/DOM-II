@@ -1,20 +1,37 @@
 // Your code goes here
 
-//mouseover nav-links
+//mouseover nav-links & preventDefault refresh on click
 let navLinks = document.querySelectorAll('.nav-link')
-navLinks.forEach((link) => link.addEventListener('mouseover', () => link.style.color = 'red'))
+navLinks.forEach(link => {
+  link.addEventListener('mouseover', () => link.style.color = 'red')
+
+  link.addEventListener('click', (e) => e.preventDefault())
+
+})
 
 //wheel top pic
 let intro = document.querySelector('img')
 intro.addEventListener('wheel', () => intro.style.border = '5px dotted black')
 
-//dblclick 
+//dblclick & stopPropagation
+let image = document.querySelectorAll('img')
+
 let page = document.querySelector('body')
-page.addEventListener('dblclick', () => page.style.backgroundColor = '#f4f4f4')
+
+image.forEach(pic => {
+  pic.addEventListener('dblclick', (e) => {
+    e.stopPropagation()
+    pic.style.border = '3px solid red'
+  })
+})
+
+page.addEventListener('dblclick', () => page.style.backgroundColor = 'grey')
+
+
 
 //click
 let nav = document.querySelector('.main-navigation')
-nav.addEventListener('click', () => nav.style.display = 'none')
+nav.addEventListener('click', () => nav.style.backgroundColor = '#f4f4f4')
 
 //scroll
 window.addEventListener('scroll', () => page.style.backgroundColor = 'salmon')
